@@ -37,10 +37,12 @@ def creation(size):
     while (byte_length(num) < size):# afsghyusafjisakhfnsajiokd
         num *= 2
     num += 1
+    while not (is_MR_prime(num) and byte_length(num) < size + alph):
+        num += 2
     while not is_MR_prime(num) :
         b_num = get_prime(size)
         num = b_num  # generating p num for mod p, while we know p-1 divisors
-        while (byte_length(num) < size):
+        while (byte_length(num) < size + alph):
             num *= 2
         num += 1
     for i in range (2,num):
