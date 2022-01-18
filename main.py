@@ -19,11 +19,6 @@ def print_hi(name):
     print (f'p={p}')
     print ('a=', a)
     print('2 ', p_num)
-    # bis = set()
-    # for i in range (1,p):#test
-    #     n = pow(a,i,p)
-    #     bis.add(n)
-    # print(f'len of nums: {len(bis)} should be = {p-1}')
     print(f' time consumed : {t2-t1}')
 
 
@@ -36,15 +31,18 @@ def creation(size):
     num = b_num  # generating p num for mod p, while we know p-1 divisors
     while (byte_length(num) < size):# afsghyusafjisakhfnsajiokd
         num *= 2
-    num += 1
-    while not (is_MR_prime(num) and byte_length(num) < size + alph):
-        num += 2
+        if (is_MR_prime(num + 1)):
+            num += 1
+            break
     while not is_MR_prime(num) :
-        b_num = get_prime(size)
+        b_num = get_prime(size - alph)
         num = b_num  # generating p num for mod p, while we know p-1 divisors
         while (byte_length(num) < size + alph):
             num *= 2
-        num += 1
+            if (is_MR_prime(num + 1)):
+                num += 1
+                break
+
     for i in range (2,num):
         if remainder_phi(i, num-1, [2, b_num]) :
             return i,num, b_num
